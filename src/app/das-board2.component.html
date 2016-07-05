@@ -1,3 +1,48 @@
-<h1>
-  {{title}}
-</h1>
+<div id="map"></div>
+
+<div class="contenido">
+    <div class="row tittle">
+        <img src="app/shared/img/name-logo.png" alt=""/>
+    </div>
+    <div class="row">
+        <h1>add a place</h1>
+    </div>
+    <div class="row">
+        <h2>PLACE INFORMATION</h2>
+    </div>
+    <div class="row">
+        <input type="text" name="name" value="" placeholder="name" [(ngModel)]="name">
+    </div>
+    <div class="row">
+        <textarea name="name" placeholder="description" [(ngModel)]="description"></textarea>
+    </div>
+    <div class="row">
+
+        <button type="button" name="button" class="miboton">
+            <input type="file" name="file" id="file" class="inputfile" accept="image/*"/>
+            <label for="file" class="milabel">
+                <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>Choose a file</label>
+        </button>
+    </div>
+    <div class="row">
+        <button type="button" name="button" class="miboton" (click)="save()">
+            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+            save place</button>
+    </div>
+    <div class="row">
+        <span class="myspan"></span>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-md-12">
+            <label class="lab-container">points</label>
+        </div>
+    </div>
+    <div class="row" *ngFor="let item of items | async">
+        <div class="col-xs-6 col-md-6">
+            <label class="info">{{ item.$key }}</label>
+        </div>
+        <div class="col-xs-6 col-md-6">
+            <div class="misvg" (click)="centerPoint(item.localitation.lat,item.localitation.lng)"></div>
+        </div>
+    </div>
+</div>
